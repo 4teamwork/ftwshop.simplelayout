@@ -1,2 +1,1 @@
-<p>Variation JS</p>
 <script type="text/javascript" tal:content="string: var varDicts = ${view/getVarDictsJSON}"></script>
