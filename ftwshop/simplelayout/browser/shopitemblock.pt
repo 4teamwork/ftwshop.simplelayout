@@ -1,0 +1,68 @@
+<div class="#" id="#"
+				tal:define="slclass view/getCSSClass;
+				text here/getBlockText|here/getText|nothing;
+				title here/Title | here/pretty_title_or_id;
+				fullblock python: text and ' sl-fullblock' or ''"
+				tal:attributes="id here/id;
+								class string:simplelayout-block-wrapper ${slclass}${fullblock};
+                                style string:height:${view/getBlockHeight}">
+
+        <h2 class="documentFirstHeading" tal:content="context/Title"> 
+            <metal:field use-macro="python:here.widget('Title', mode='view')">
+            Title
+            </metal:field>
+        </h2>
+
+        <!-- <div tal:replace="structure provider:plone.belowcontenttitle" /> -->
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        <div tal:replace="structure text" />
+
+    <!-- <script type="text/javascript" tal:content="string: var varDicts = ${view/getVarDictsJSON}"></script> -->
+ 
+      
+    <tal:shopitems repeat="item view/getItemDatas">
+
+        <div class="listItem shopItem">
+            
+            <div class="listItemImage" tal:condition="item/imageTag">
+                <a href="#" tal:attributes="href item/url">
+                <img src="" tal:replace="structure item/imageTag" /></a>
+            </div>
+            
+
+			<!-- Single Item, no variations -->
+	        <div tal:condition="not:item/hasVariations"
+	             tal:replace="structure python:view.single_item(item)" />
+
+	        <tal:variations tal:condition="item/hasVariations"
+	                        tal:define="varConf item/varConf">
+
+				<!-- One Variation -->
+		           <div tal:condition="python:len(varConf.getVariationAttributes()) == 1"
+		                tal:replace="structure python:view.one_variation(item)" />
+		                
+
+		           
+				<!-- Two Variations -->
+		           <div tal:condition="python:len(varConf.getVariationAttributes()) == 2"
+		                tal:replace="structure python:view.two_variations(item)" />
+	        </tal:variations> 
+		            
+		  </div>
+		  
+	</tal:shopitems>
+	
+
+	<tal:jsLoaded define="jsLoaded view/shop_js_loaded">
+	<tal:cond condition="not: jsLoaded">
+	    <script type="text/javascript" src="++resource++shop.js"></script>
+	    <tal:setAlreadyLoaded define="dummy python: view.shop_js_loaded(True)">
+	    </tal:setAlreadyLoaded>
+	</tal:cond>
+	</tal:jsLoaded>
+
+</div>
+
+<span class="visualClear">&nbsp;</span>
+
+

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<layers>
+    <layer name="ftwshop.simplelayout" 
+           interface="ftwshop.simplelayout.interfaces.IFtwShopSimplelayoutSpecific" />
+</layers>

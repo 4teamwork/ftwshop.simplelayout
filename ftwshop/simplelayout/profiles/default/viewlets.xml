@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object>
+
+  <order manager="simplelayout.base.listing" skinname="*">
+        <viewlet name="ftwshop.simplelayout.variationjs" insert-before="*"/>
+  </order>
+
+</object>
+    

@@ -1,0 +1,5 @@
+# created by: svn propset svn:ignore -F ./IGNORE.txt .
+
+ftwshop.simplelayout.egg-info
+build
+dist
