@@ -32,7 +32,10 @@ long_description = (
     '********\n'
     )
 
-tests_require=['zope.testing']
+tests_require = [
+    'zope.testing',
+    'Products.PloneTestCase',
+    ]
 
 setup(name='ftwshop.simplelayout',
       version=version,
@@ -57,6 +60,7 @@ setup(name='ftwshop.simplelayout',
       install_requires=[
         'setuptools',
         'ftw.shop',
+        'simplelayout.base',
       ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
