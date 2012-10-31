@@ -28,11 +28,14 @@ class TestSetup(FtwShopSimplelayoutTestCase):
 
     def test_shop_category_fti(self):
         document_fti = getattr(self.types, 'ShopItemBlock')
-        self.failUnless(document_fti.global_allow)
+        self.assertFalse(document_fti.global_allow)
 
     def test_shop_item_block_creation(self):
         self.setRoles(('Manager', ))
+        document_fti = getattr(self.types, 'ShopItemBlock')
+        document_fti.global_allow = True
         self.portal.invokeFactory('ShopItemBlock', 'test-shopitemblock')
+        document_fti.global_allow = False
         self.setRoles(('Member', ))
         self.failUnless(self.portal['test-shopitemblock'].id == 'test-shopitemblock')
 
