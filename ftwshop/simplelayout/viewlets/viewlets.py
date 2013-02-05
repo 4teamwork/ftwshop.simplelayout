@@ -13,7 +13,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 class VariationJSViewlet(ViewletBase):
     render = ViewPageTemplateFile('variationjs.pt')
     implements(ISimpleLayoutListingViewlet)
-    
+
     def getItemDatas(self):
         result = []
         context = self.view.context
@@ -21,7 +21,8 @@ class VariationJSViewlet(ViewletBase):
         for obj in objects:
             if obj.portal_type == "ShopItemBlock":
                 shop_item = obj.getField('item').get(obj)
-                shopitem_view = getMultiAdapter((shop_item, context.request), name="view")
+                shopitem_view = getMultiAdapter((shop_item, context.request),
+                                                 name="view")
                 item_datas = shopitem_view.getItemDatas()
                 result.append(item_datas[0])
         return result
