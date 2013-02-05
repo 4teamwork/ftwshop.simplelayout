@@ -20,15 +20,16 @@ from ftwshop.simplelayout import shopMessageFactory as _
 
 ShopItemBlockSchema = ATDocumentSchema.copy() + atapi.Schema((
 
-    atapi.ReferenceField('item',
-        required = 1,
+    atapi.ReferenceField(
+        'item',
+        required=1,
         languageIndependent=True,
-        relationship = 'itemblock_item',
-        allowed_types = ['ShopItem'],
-        widget = atapi.ReferenceWidget(
-            label = _(u"label_item", default=u"Shop Item"),
-            description = _(u"desc_item", default=u""),
-            checkbox_bound = 10,
+        relationship='itemblock_item',
+        allowed_types=['ShopItem'],
+        widget=atapi.ReferenceWidget(
+            label=_(u"label_item", default=u"Shop Item"),
+            description=_(u"desc_item", default=u""),
+            checkbox_bound=10,
         ),
     ),
 ))
@@ -42,9 +43,10 @@ class ShopItemBlock(ATDocument):
     schema = ShopItemBlockSchema
 
 
-#ShopItemBlockSchema['title'].widget.visible = {'view': 'invisible', 'edit': 'invisible'}
-ShopItemBlockSchema['text'].widget.visible = {'view': 'invisible', 'edit': 'invisible'}
-ShopItemBlockSchema['description'].widget.visible = {'view': 'invisible', 'edit': 'invisible'}
+ShopItemBlockSchema['text'].widget.visible = {'view': 'invisible',
+                                              'edit': 'invisible'}
+ShopItemBlockSchema['description'].widget.visible = {'view': 'invisible',
+                                                     'edit': 'invisible'}
 ShopItemBlockSchema['excludeFromNav'].default = True
 
 

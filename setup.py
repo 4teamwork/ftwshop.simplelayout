@@ -5,6 +5,7 @@ This module contains the tool of ftwshop.simplelayout
 import os
 from setuptools import setup, find_packages
 
+
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
@@ -39,9 +40,10 @@ tests_require = [
 
 setup(name='ftwshop.simplelayout',
       version=version,
-      description="Extension to ftw.shop adding SimpleLayout support" ,
+      description="Extension to ftw.shop adding SimpleLayout support",
       long_description=long_description,
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      # Get more strings from
+      # http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Plone',
         'Framework :: Plone :: 4.1',
@@ -66,7 +68,7 @@ setup(name='ftwshop.simplelayout',
       ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
-      test_suite = 'ftwshop.simplelayout.tests.test_docs.test_suite',
+      test_suite='ftwshop.simplelayout.tests.test_docs.test_suite',
       entry_points="""
       # -*- entry_points -*-
       [z3c.autoinclude.plugin]

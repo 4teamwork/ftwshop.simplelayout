@@ -11,4 +11,3 @@ class IFtwShopSimplelayoutSpecific(IDefaultPloneLayer):
 class IShopItemBlock(Interface):
     """A simple shop item block
     """
-
