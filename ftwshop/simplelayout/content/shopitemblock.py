@@ -17,6 +17,41 @@ else:
 from ftwshop.simplelayout.interfaces import IShopItemBlock
 from ftwshop.simplelayout.config import PROJECTNAME
 from ftwshop.simplelayout import shopMessageFactory as _
+from Products.CMFCore.permissions import ManagePortal
+
+
+# This part is taken from ftw.contentpage.
+# Because we don't want a dependency on it.
+DEFAULT_TO_HIDE = [
+    'subject', 'relatedItems', 'location', 'language',  # Categorization
+    'effectiveDate', 'expirationDate',  # Dates
+    'creators', 'contributors', 'rights',  # Contributors
+    'allowDiscussion', 'excludeFromNav',  # Settings
+    'nextPreviousEnabled', 'presentation', 'tableContents',
+    'showinsearch', 'searchwords'
+    ]
+
+
+def finalize(schema, show=None, hide=None):
+    to_hide = DEFAULT_TO_HIDE
+    if hide:
+        to_hide += hide
+
+    if show:
+        for name in show:
+            if name in to_hide:
+                to_hide.remove(name)
+
+    for name in to_hide:
+        if name in schema:
+            field = schema[name]
+            schema.changeSchemataForField(name, 'default')
+            field.widget.visible = {'view': 'invisible', 'edit': 'invisible'}
+            field.write_permission = ManagePortal
+
+    # Hide from navigation by default
+    schema['excludeFromNav'].default = True
+
 
 ShopItemBlockSchema = ATDocumentSchema.copy() + atapi.Schema((
 
@@ -47,7 +82,8 @@ ShopItemBlockSchema['text'].widget.visible = {'view': 'invisible',
                                               'edit': 'invisible'}
 ShopItemBlockSchema['description'].widget.visible = {'view': 'invisible',
                                                      'edit': 'invisible'}
-ShopItemBlockSchema['excludeFromNav'].default = True
+
+finalize(ShopItemBlockSchema)
 
 
 registerType(ShopItemBlock, PROJECTNAME)
