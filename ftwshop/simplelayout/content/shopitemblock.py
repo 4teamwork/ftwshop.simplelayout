@@ -1,23 +1,20 @@
 """Definition of the Shop Item Block content type
 """
 
+from ftwshop.simplelayout import shopMessageFactory as _
+from ftwshop.simplelayout.config import PROJECTNAME
+from ftwshop.simplelayout.interfaces import IShopItemBlock
+from Products.Archetypes import atapi
+from Products.ATContentTypes.config import HAS_LINGUA_PLONE
 from Products.ATContentTypes.content.document import ATDocument
 from Products.ATContentTypes.content.document import ATDocumentSchema
-from zope.interface import implements
-from Products.Archetypes import atapi
-
+from Products.CMFCore.permissions import ManagePortal
 from simplelayout.base.interfaces import ISimpleLayoutBlock
-
-from Products.ATContentTypes.config import HAS_LINGUA_PLONE
+from zope.interface import implements
 if HAS_LINGUA_PLONE:
     from Products.LinguaPlone.public import registerType
 else:
     from Products.Archetypes.atapi import registerType
-
-from ftwshop.simplelayout.interfaces import IShopItemBlock
-from ftwshop.simplelayout.config import PROJECTNAME
-from ftwshop.simplelayout import shopMessageFactory as _
-from Products.CMFCore.permissions import ManagePortal
 
 
 # This part is taken from ftw.contentpage.
