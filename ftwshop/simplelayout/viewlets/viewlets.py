@@ -21,7 +21,7 @@ class VariationJSViewlet(ViewletBase):
         for obj in objects:
             if obj.portal_type == "ShopItemBlock":
                 shop_item = obj.getField('item').get(obj)
-                shopitem_view = getMultiAdapter((shop_item, context.request),
+                shopitem_view = getMultiAdapter((shop_item, context.REQUEST),
                                                  name="view")
                 item_datas = shopitem_view.getItemDatas()
                 result.append(item_datas[0])
