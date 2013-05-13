@@ -3,8 +3,7 @@
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="ftwshop.simplelayout" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   <property name="title" i18n:translate="">Shop Item Block</property>
-  <property name="description"
-    i18n:translate="">A simple shop item block</property>
+  <property name="description" i18n:translate=""></property>
   <property name="content_meta_type">Shop Item Block</property>
   <property name="content_icon">document_icon.gif</property>
   <property name="product">ftwshop.simplelayout</property>

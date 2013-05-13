@@ -63,7 +63,6 @@ ShopItemBlockSchema = ATDocumentSchema.copy() + atapi.Schema((
         allow_browse=True,
         widget=ReferenceBrowserWidget(
             label=_(u"label_item", default=u"Shop Item"),
-            description=_(u"desc_item", default=u""),
         ),
     ),
 ))
