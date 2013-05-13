@@ -1,8 +1,5 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
-from ftwshop.simplelayout import shopMessageFactory as _
 from ftw.shop.browser.shopitem import ShopCompactItemView
-
 from simplelayout.base.interfaces import IBlockConfig
 
 

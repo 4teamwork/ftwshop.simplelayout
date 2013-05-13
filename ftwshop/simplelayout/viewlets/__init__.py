@@ -1,1 +1,1 @@
-from viewlets import *
+from ftwshop.simplelayout.viewlets.viewlets import *
