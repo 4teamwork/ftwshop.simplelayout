@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="ftwshop.simplelayout">
+
+    <!-- 1 -> 1001 -->
+    <genericsetup:upgradeStep
+        title="Add action in simplelayout block to shop item"
+        description=""
+        source="1"
+        destination="1001"
+        handler="ftwshop.simplelayout.upgrades.to1001.AddBlockAction"
+        profile="ftwshop.simplelayout:default"
+        />
+
+    <genericsetup:registerProfile
+        name="1001"
+        title="ftwshop.simplelayout.upgrades.1001"
+        description=""
+        directory="profiles/1001"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+</configure>

@@ -3,20 +3,24 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="ftwshop.simplelayout">
 
-  <include package="plone.app.contentmenu" />
+    <include package="plone.app.contentmenu" />
 
-  <browser:page
-    for="..interfaces.IShopItemBlock"
-    name="block_view"
-    class=".shopitemblock.ShopItemBlockView"
-    permission="zope2.View" />
+    <browser:resourceDirectory
+        name="ftwshop.simplelayout-resources"
+        directory="resources" />
+
+    <browser:page
+        for="..interfaces.IShopItemBlock"
+        name="block_view"
+        class=".shopitemblock.ShopItemBlockView"
+        permission="zope2.View" />
 
     <browser:viewlet
-        for="simplelayout.base.interfaces.ISimplelayoutView"  
-        name="ftwshop.simplelayout.variationjs" 
+        for="simplelayout.base.interfaces.ISimplelayoutView"
+        name="ftwshop.simplelayout.variationjs"
         manager="simplelayout.base.interfaces.ISimpleViewletListingProvider"
         class="..viewlets.VariationJSViewlet"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
 </configure>
