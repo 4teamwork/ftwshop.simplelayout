@@ -6,8 +6,8 @@ version = '1.0'
 
 
 tests_require = [
-    'zope.testing',
     'Products.PloneTestCase',
+    'plone.browserlayer',
     ]
 
 
@@ -41,9 +41,23 @@ setup(name='ftwshop.simplelayout',
       zip_safe=False,
 
       install_requires=[
-        'setuptools',
+        'Products.ATContentTypes',
+        'Products.Archetypes',
+        'Products.CMFCore',
+        'Products.GenericSetup',
+        'Products.LinguaPlone',
+        'Zope2',
+        'archetypes.referencebrowserwidget',
         'ftw.shop',
+        'plone.app.contentmenu',
+        'plone.app.layout',
+        'plone.theme',
+        'setuptools',
+        'simplejson',
         'simplelayout.base',
+        'zope.component',
+        'zope.i18nmessageid',
+        'zope.interface',
         ],
 
       tests_require=tests_require,
