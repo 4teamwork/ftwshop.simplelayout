@@ -1,2 +1,7 @@
 recursive-include ftwshop *
-global-exclude *pyc
+recursive-include docs *
+include *.txt
+include *.rst
+global-exclude *.pyc
+global-exclude ._*
+global-exclude *.mo
