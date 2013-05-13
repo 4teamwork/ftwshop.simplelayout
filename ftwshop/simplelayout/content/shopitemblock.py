@@ -1,6 +1,7 @@
 """Definition of the Shop Item Block content type
 """
 
+from archetypes.referencebrowserwidget import ReferenceBrowserWidget
 from ftwshop.simplelayout import shopMessageFactory as _
 from ftwshop.simplelayout.config import PROJECTNAME
 from ftwshop.simplelayout.interfaces import IShopItemBlock
@@ -58,10 +59,11 @@ ShopItemBlockSchema = ATDocumentSchema.copy() + atapi.Schema((
         languageIndependent=True,
         relationship='itemblock_item',
         allowed_types=['ShopItem'],
-        widget=atapi.ReferenceWidget(
+        allow_search=True,
+        allow_browse=True,
+        widget=ReferenceBrowserWidget(
             label=_(u"label_item", default=u"Shop Item"),
             description=_(u"desc_item", default=u""),
-            checkbox_bound=10,
         ),
     ),
 ))
