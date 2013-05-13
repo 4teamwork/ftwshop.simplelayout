@@ -48,4 +48,10 @@
         <permission value="Modify portal content"/>
     </action>
 
+    <action title="Go to shop item" action_id="sl-goto-shopitem" category="sl-actions"
+            condition_expr="" icon_expr="string:++resource++ftwshop.simplelayout-resources/shopitem.png"
+            url_expr="python:here.getItem().absolute_url()" visible="True">
+        <permission value="Modify portal content"/>
+    </action>
+
 </object>
