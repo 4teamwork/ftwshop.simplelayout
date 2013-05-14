@@ -11,6 +11,12 @@ tests_require = [
     ]
 
 
+extras_require = {
+    'tests': tests_require,
+    'linguaplone': [
+        'Products.LinguaPlone']}
+
+
 setup(name='ftwshop.simplelayout',
       version=version,
       description="Extension to ftw.shop adding SimpleLayout support",
@@ -46,7 +52,6 @@ setup(name='ftwshop.simplelayout',
         'Products.Archetypes',
         'Products.CMFCore',
         'Products.GenericSetup',
-        'Products.LinguaPlone',
         'Zope2',
         'archetypes.referencebrowserwidget',
         'ftw.shop',
@@ -63,7 +68,7 @@ setup(name='ftwshop.simplelayout',
         ],
 
       tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
+      extras_require=extras_require,
 
       entry_points="""
       # -*- entry_points -*-
