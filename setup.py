@@ -6,7 +6,7 @@ version = '1.1.dev0'
 
 
 tests_require = [
-    'Products.PloneTestCase',
+    'plone.app.testing',
     'plone.browserlayer',
     ]
 
