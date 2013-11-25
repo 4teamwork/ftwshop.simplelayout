@@ -1,6 +1,7 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from ftw.shop.browser.shopitem import ShopCompactItemView
 from simplelayout.base.interfaces import IBlockConfig
+from zope.component import queryMultiAdapter
 
 
 class ShopItemBlockView(ShopCompactItemView):
@@ -8,9 +9,6 @@ class ShopItemBlockView(ShopCompactItemView):
     """
 
     __call__ = ViewPageTemplateFile('shopitemblock.pt')
-
-    def getCSSClass(self):
-        return 'sl-img-no-image'
 
     def getBlockHeight(self):
         blockconf = IBlockConfig(self.context)
@@ -32,6 +30,7 @@ class ShopItemBlockView(ShopCompactItemView):
         context = self.get_item()
         return [context]
 
+
     def shop_js_loaded(self, loaded=False):
         """
         Make sure the shop.js only gets loaded once, so events
@@ -40,3 +39,16 @@ class ShopItemBlockView(ShopCompactItemView):
         if loaded:
             self.request.set('shop_js_loaded', True)
         return self.request.get('shop_js_loaded', False)
+
+    def get_image_tag(self):
+        obj = self.get_item()
+        if not obj.getField('image').get(obj):
+            return ''
+        scales = queryMultiAdapter((obj, self.request), name="images")
+        return scales.scale(
+            'image',
+            width=200,
+            height=200).tag()
+
+    def get_image_url(self):
+        return self.get_item().absolute_url() + '/image'

@@ -1,3 +1,18 @@
 li.slAction > a.sl-goto-shopitem-action {
   background: url(++resource++ftwshop.simplelayout-resources/shopitem.png) no-repeat 0 0;
 }
+
+.listItemTable {
+    width:420px;
+    float:left;
+    text-align:center;
+}
+.shopitem-image {
+    float:left;
+}
+
+.shop-item-block input[type="text"] {
+    width: auto;
+    margin-right:5px;
+    
+}

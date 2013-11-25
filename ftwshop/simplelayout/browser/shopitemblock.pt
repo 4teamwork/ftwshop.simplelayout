@@ -1,12 +1,11 @@
 <div class="#" id="#"
+        xmlns:tal="http://xml.zope.org/namespaces/tal"
+        xmlns:metal="http://xml.zope.org/namespaces/metal"
 				tal:define="slclass view/getCSSClass;
 				text here/getBlockText|here/getText|nothing;
 				title here/Title | here/pretty_title_or_id;
 				fullblock python: text and ' sl-fullblock' or ''"
-				tal:attributes="id here/id;
-								class string:simplelayout-block-wrapper ${slclass}${fullblock};
-                                style string:height:${view/getBlockHeight}">
-
+				tal:attributes="id here/id">
         <h2 class="documentFirstHeading" tal:content="context/Title">
             <metal:field use-macro="python:here.widget('Title', mode='view')">
             Title
@@ -20,12 +19,12 @@
 
     <tal:shopitems repeat="item view/getItemDatas">
 
-        <div class="listItem shopItem">
-
-            <div class="listItemImage" tal:condition="item/imageTag">
-                <a href="#" tal:attributes="href item/url">
-                <img src="" tal:replace="structure item/imageTag" /></a>
-            </div>
+        <div class="sl-img-wrapper shopitem-image" tal:condition="item/imageTag">
+                    <a tal:attributes="href view/get_image_url"
+                       tal:omit-tag="not: here/getImageClickable|nothing">
+                        <img tal:replace="structure view/get_image_tag" />
+                    </a>
+        </div>
 
 
 			<!-- Single Item, no variations -->
@@ -46,9 +45,9 @@
 		                tal:replace="structure python:view.two_variations(item)" />
 	        </tal:variations>
 
-		  </div>
+	    </tal:shopitems>
 
-	</tal:shopitems>
+
 
 
 	<tal:jsLoaded define="jsLoaded view/shop_js_loaded">
@@ -61,6 +60,4 @@
 
 </div>
 
-<span class="visualClear">&nbsp;</span>
-
-
+<div class="visualClear">&nbsp;</div>
