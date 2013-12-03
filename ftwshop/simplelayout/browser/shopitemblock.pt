@@ -1,8 +1,7 @@
 <div class="#" id="#"
         xmlns:tal="http://xml.zope.org/namespaces/tal"
         xmlns:metal="http://xml.zope.org/namespaces/metal"
-				tal:define="slclass view/getCSSClass;
-				text here/getBlockText|here/getText|nothing;
+				tal:define="text here/getBlockText|here/getText|nothing;
 				title here/Title | here/pretty_title_or_id;
 				fullblock python: text and ' sl-fullblock' or ''"
 				tal:attributes="id here/id">
