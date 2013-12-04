@@ -4,6 +4,9 @@ Changelog
 1.1 (unreleased)
 ----------------
 
+- Implement startup directory adapter for shopitemblock.
+  [mathias.leimgruber]
+
 - Show image in shopitemblock.
   [tschanzt]
 

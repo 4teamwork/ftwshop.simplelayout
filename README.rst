@@ -7,9 +7,12 @@ Integrates `ftw.shop <https://github.com/4teamwork/ftw.shop>`_ into
 
 The package provides a simplelayout block ``ShopItemBlock`` which
 represents and references a normal ftw.shop ``ShopItem``. The Block
-shows the price of the shop item and a button for adding it to the
+shows the price of the shop item, the image and a button for adding it to the
 shopping cart.
 
+To set the ShopItem reference easily, the startup directory is set to the IShopRoot
+marked content.
+You can change this by implementing your own IShopRootStartUpDir adapter.
 
 
 Usage
