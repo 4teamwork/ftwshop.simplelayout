@@ -29,14 +29,16 @@ class FtwshopSimplelayoutLayer(PloneSandboxLayer):
             '</configure>',
             context=configurationContext)
         import Products.CMFCore
-        xmlconfig.file('permissions.zcml', Products.CMFCore, context=configurationContext)
+        xmlconfig.file('permissions.zcml',
+                       Products.CMFCore,
+                       context=configurationContext)
         # Load packages
-        z2.installProduct(app, 'collective.z3cform.wizard')
+
         z2.installProduct(app, 'ftw.shop')
         z2.installProduct(app, 'ftwshop.simplelayout')
-        
+
     def setUpPloneSite(self, portal):
-         applyProfile(portal, "ftwshop.simplelayout:default")
+        applyProfile(portal, "ftwshop.simplelayout:default")
 
 FTWSHOP_SIMPLELAYOUT_FIXTURE = FtwshopSimplelayoutLayer()
 FTWSHOP_SIMPLELAYOUT_INTEGRATION_TESTING = IntegrationTesting(
