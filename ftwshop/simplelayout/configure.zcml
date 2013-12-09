@@ -25,4 +25,7 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+    <!-- Startup directory adapter -->
+    <adapter factory=".startupdir.DefaultStartUpDirectory"/>
+
 </configure>

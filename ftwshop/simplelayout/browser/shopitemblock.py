@@ -30,7 +30,6 @@ class ShopItemBlockView(ShopCompactItemView):
         context = self.get_item()
         return [context]
 
-
     def shop_js_loaded(self, loaded=False):
         """
         Make sure the shop.js only gets loaded once, so events

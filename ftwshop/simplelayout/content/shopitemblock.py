@@ -5,13 +5,16 @@ from archetypes.referencebrowserwidget import ReferenceBrowserWidget
 from ftwshop.simplelayout import shopMessageFactory as _
 from ftwshop.simplelayout.config import PROJECTNAME
 from ftwshop.simplelayout.interfaces import IShopItemBlock
+from ftwshop.simplelayout.interfaces import IShopRootStartUpDir
 from Products.Archetypes import atapi
 from Products.ATContentTypes.config import HAS_LINGUA_PLONE
 from Products.ATContentTypes.content.document import ATDocument
 from Products.ATContentTypes.content.document import ATDocumentSchema
 from Products.CMFCore.permissions import ManagePortal
 from simplelayout.base.interfaces import ISimpleLayoutBlock
+from zope.component import getMultiAdapter
 from zope.interface import implements
+
 if HAS_LINGUA_PLONE:
     from Products.LinguaPlone.public import registerType
 else:
@@ -63,6 +66,7 @@ ShopItemBlockSchema = ATDocumentSchema.copy() + atapi.Schema((
         allow_browse=True,
         widget=ReferenceBrowserWidget(
             label=_(u"label_item", default=u"Shop Item"),
+            startup_directory_method='get_startup_directory',
         ),
     ),
 ))
@@ -74,6 +78,12 @@ class ShopItemBlock(ATDocument):
 
     meta_type = "ShopItemBlock"
     schema = ShopItemBlockSchema
+
+    def get_startup_directory(self):
+        """Try to call an adapter to get the shop root.
+        By default it returns the shop root with the shortest path"""
+        adapter = getMultiAdapter((self, self.REQUEST), IShopRootStartUpDir)
+        return adapter.get_startup_directory()
 
 
 ShopItemBlockSchema['text'].widget.visible = {'view': 'invisible',

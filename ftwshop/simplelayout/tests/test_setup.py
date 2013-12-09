@@ -1,12 +1,14 @@
-import unittest2 as unittest
-from plone.browserlayer.utils import registered_layers
 from ftwshop.simplelayout.interfaces import IFtwShopSimplelayoutSpecific
-from ftwshop.simplelayout.testing import FTWSHOP_SIMPLELAYOUT_INTEGRATION_TESTING
-from plone.app.testing import TEST_USER_ID, TEST_USER_NAME
-from plone.app.testing import setRoles
+from ftwshop.simplelayout.testing import (
+    FTWSHOP_SIMPLELAYOUT_INTEGRATION_TESTING)
 from plone.app.testing import login
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID, TEST_USER_NAME
+from plone.browserlayer.utils import registered_layers
+from unittest2 import TestCase
 
-class TestSetup(unittest.TestCase):
+
+class TestSetup(TestCase):
 
     layer = FTWSHOP_SIMPLELAYOUT_INTEGRATION_TESTING
 
@@ -14,7 +16,7 @@ class TestSetup(unittest.TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         login(self.portal, TEST_USER_NAME)
-        
+
     def test_browser_layer_installed(self):
         self.assertTrue(IFtwShopSimplelayoutSpecific in registered_layers())
 
@@ -24,11 +26,13 @@ class TestSetup(unittest.TestCase):
         roles = ['Manager', 'Contributor']
         for r in roles:
             selected_permissions = [p['name'] for p in
-                                    self.portal.permissionsOfRole(r) if p['selected']]
-            self.failUnless('ftwshop.simplelayout: Add Shop Item Block' in selected_permissions)
+                                    self.portal.permissionsOfRole(r)
+                                        if p['selected']]
+            self.assertIn('ftwshop.simplelayout: Add Shop Item Block',
+                          selected_permissions)
 
     def test_shopitemblock_types_installed(self):
-        self.failUnless('ShopItemBlock' in self.portal.portal_types.objectIds())
+        self.assertIn('ShopItemBlock', self.portal.portal_types.objectIds())
 
     def test_shop_category_fti(self):
         document_fti = getattr(self.portal.portal_types, 'ShopItemBlock')
@@ -39,5 +43,5 @@ class TestSetup(unittest.TestCase):
         document_fti.global_allow = True
         self.portal.invokeFactory('ShopItemBlock', 'test-shopitemblock')
         document_fti.global_allow = False
-        self.failUnless(self.portal['test-shopitemblock'].id == 'test-shopitemblock')
-
+        self.assertEquals('test-shopitemblock',
+                          self.portal['test-shopitemblock'].id)

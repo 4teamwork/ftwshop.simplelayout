@@ -1,7 +1,9 @@
+from ftw.builder.testing import BUILDER_LAYER
+from ftwshop.simplelayout.tests import builders
+from plone.app.testing import applyProfile
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
-from plone.app.testing import applyProfile
 from plone.testing import z2
 from zope.configuration import xmlconfig
 import os
@@ -9,7 +11,7 @@ import os
 
 class FtwshopSimplelayoutLayer(PloneSandboxLayer):
 
-    defaultBases = (PLONE_FIXTURE,)
+    defaultBases = (PLONE_FIXTURE, BUILDER_LAYER)
 
     def setUp(self):
         super(FtwshopSimplelayoutLayer, self).setUp()
@@ -29,14 +31,16 @@ class FtwshopSimplelayoutLayer(PloneSandboxLayer):
             '</configure>',
             context=configurationContext)
         import Products.CMFCore
-        xmlconfig.file('permissions.zcml', Products.CMFCore, context=configurationContext)
+        xmlconfig.file('permissions.zcml',
+                       Products.CMFCore,
+                       context=configurationContext)
         # Load packages
-        z2.installProduct(app, 'collective.z3cform.wizard')
+
         z2.installProduct(app, 'ftw.shop')
         z2.installProduct(app, 'ftwshop.simplelayout')
-        
+
     def setUpPloneSite(self, portal):
-         applyProfile(portal, "ftwshop.simplelayout:default")
+        applyProfile(portal, "ftwshop.simplelayout:default")
 
 FTWSHOP_SIMPLELAYOUT_FIXTURE = FtwshopSimplelayoutLayer()
 FTWSHOP_SIMPLELAYOUT_INTEGRATION_TESTING = IntegrationTesting(
