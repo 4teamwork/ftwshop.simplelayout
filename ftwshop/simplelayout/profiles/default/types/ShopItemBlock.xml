@@ -19,6 +19,7 @@
         <element value="view" />
         <element value="block_view" />
         <element value="base_view" />
+        <element value="paragraph_view" />
     </property>
     <alias from="(Default)" to="(dynamic view)" />
 
