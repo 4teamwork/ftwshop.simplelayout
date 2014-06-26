@@ -4,7 +4,8 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix fti: add paragraph_view to view_methods.
+  [mathias.leimgruber]
 
 
 1.1 (2013-12-13)
