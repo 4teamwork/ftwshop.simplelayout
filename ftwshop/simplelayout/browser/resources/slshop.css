@@ -9,10 +9,10 @@ li.slAction > a.sl-goto-shopitem-action {
 }
 .shopitem-image {
     float:left;
+    margin-right: 2em;
 }
 
 .shop-item-block input[type="text"] {
     width: auto;
     margin-right:5px;
-    
 }
