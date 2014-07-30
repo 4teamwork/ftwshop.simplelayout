@@ -1,20 +1,13 @@
 <div class="#" id="#"
         xmlns:tal="http://xml.zope.org/namespaces/tal"
         xmlns:metal="http://xml.zope.org/namespaces/metal"
-				tal:define="text here/getBlockText|here/getText|nothing;
-				title here/Title | here/pretty_title_or_id;
-				fullblock python: text and ' sl-fullblock' or ''"
-				tal:attributes="id here/id">
+                tal:define="title here/Title | here/pretty_title_or_id"
+                tal:attributes="id here/id">
         <h2 class="documentFirstHeading" tal:content="context/Title">
             <metal:field use-macro="python:here.widget('Title', mode='view')">
             Title
             </metal:field>
         </h2>
-
-        <div tal:replace="structure text" />
-
-    <!-- <script type="text/javascript" tal:content="string: var varDicts = ${view/getVarDictsJSON}"></script> -->
-
 
     <tal:shopitems repeat="item view/getItemDatas">
 
@@ -24,38 +17,38 @@
                         <img tal:replace="structure view/get_image_tag" />
                     </a>
         </div>
+        <div tal:content="item/description"></div>
 
+            <!-- Single Item, no variations -->
+            <div tal:condition="not:item/hasVariations"
+                 tal:replace="structure python:view.single_item(item)" />
 
-			<!-- Single Item, no variations -->
-	        <div tal:condition="not:item/hasVariations"
-	             tal:replace="structure python:view.single_item(item)" />
+            <tal:variations tal:condition="item/hasVariations"
+                            tal:define="varConf item/varConf">
 
-	        <tal:variations tal:condition="item/hasVariations"
-	                        tal:define="varConf item/varConf">
-
-				<!-- One Variation -->
-		           <div tal:condition="python:len(varConf.getVariationAttributes()) == 1"
-		                tal:replace="structure python:view.one_variation(item)" />
-
-
-
-				<!-- Two Variations -->
-		           <div tal:condition="python:len(varConf.getVariationAttributes()) == 2"
-		                tal:replace="structure python:view.two_variations(item)" />
-	        </tal:variations>
-
-	    </tal:shopitems>
+                <!-- One Variation -->
+                   <div tal:condition="python:len(varConf.getVariationAttributes()) == 1"
+                        tal:replace="structure python:view.one_variation(item)" />
 
 
 
+                <!-- Two Variations -->
+                   <div tal:condition="python:len(varConf.getVariationAttributes()) == 2"
+                        tal:replace="structure python:view.two_variations(item)" />
+            </tal:variations>
 
-	<tal:jsLoaded define="jsLoaded view/shop_js_loaded">
-	<tal:cond condition="not: jsLoaded">
-	    <script type="text/javascript" src="++resource++shop.js"></script>
-	    <tal:setAlreadyLoaded define="dummy python: view.shop_js_loaded(True)">
-	    </tal:setAlreadyLoaded>
-	</tal:cond>
-	</tal:jsLoaded>
+        </tal:shopitems>
+
+
+
+
+    <tal:jsLoaded define="jsLoaded view/shop_js_loaded">
+    <tal:cond condition="not: jsLoaded">
+        <script type="text/javascript" src="++resource++shop.js"></script>
+        <tal:setAlreadyLoaded define="dummy python: view.shop_js_loaded(True)">
+        </tal:setAlreadyLoaded>
+    </tal:cond>
+    </tal:jsLoaded>
 
 </div>
 
