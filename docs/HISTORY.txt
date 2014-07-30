@@ -4,7 +4,8 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Replace inexistent text (of block), with the description of the shopitem.
+  [mathias.leimgruber]
 
 
 1.1.1 (2014-06-26)
