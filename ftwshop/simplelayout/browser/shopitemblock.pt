@@ -17,7 +17,7 @@
                         <img tal:replace="structure view/get_image_tag" />
                     </a>
         </div>
-        <div tal:content="item/description"></div>
+        <div tal:condition="context/getItem | nothing" tal:content="structure python: context.getItem().getText()"></div>
 
             <!-- Single Item, no variations -->
             <div tal:condition="not:item/hasVariations"
