@@ -4,7 +4,8 @@ Changelog
 1.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update shop.js URL according to changed urls in ftw.shop 2.0.6.
+  [jone]
 
 
 1.1.4 (2014-08-20)

@@ -44,7 +44,8 @@
 
     <tal:jsLoaded define="jsLoaded view/shop_js_loaded">
     <tal:cond condition="not: jsLoaded">
-        <script type="text/javascript" src="++resource++shop.js"></script>
+        <script type="text/javascript"
+                tal:attributes="src string:${context/@@plone_portal_state/portal_url}/++resource++ftw-shop-resources/shop.js"></script>
         <tal:setAlreadyLoaded define="dummy python: view.shop_js_loaded(True)">
         </tal:setAlreadyLoaded>
     </tal:cond>
