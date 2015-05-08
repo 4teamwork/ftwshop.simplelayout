@@ -38,7 +38,7 @@ setup(name='ftwshop.simplelayout',
         ],
 
       keywords='ftw shop simplelayout',
-      author='4teamwork GmbH',
+      author='4teamwork AG',
       author_email='mailto:info@4teamwork.ch',
       url='https://github.com/4teamwork/ftwshop.simplelayout',
       license='GPL2',
