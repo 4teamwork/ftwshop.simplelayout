@@ -40,9 +40,9 @@ Runs with `Plone <http://www.plone.org/>`_ `4.1`, `4.2` or `4.3`.
 Links
 -----
 
-- Main github project repository: https://github.com/4teamwork/ftwshop.simplelayout
-- Issue tracker: https://github.com/4teamwork/ftwshop.simplelayout/issues
-- Package on pypi: http://pypi.python.org/pypi/ftwshop.simplelayout
+- Github: https://github.com/4teamwork/ftwshop.simplelayout
+- Issues: https://github.com/4teamwork/ftwshop.simplelayout/issues
+- Pypi: http://pypi.python.org/pypi/ftwshop.simplelayout
 - Continuous integration: https://jenkins.4teamwork.ch/search?q=ftwshop.simplelayout
 
 
