@@ -9,6 +9,7 @@ tests_require = [
     'plone.app.testing',
     'plone.browserlayer',
     'ftw.builder',
+    'unittest2',
     ]
 
 
