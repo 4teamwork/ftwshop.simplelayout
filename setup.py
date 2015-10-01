@@ -50,6 +50,7 @@ setup(name='ftwshop.simplelayout',
       zip_safe=False,
 
       install_requires=[
+        'Plone',
         'Products.ATContentTypes',
         'Products.Archetypes',
         'Products.CMFCore',
