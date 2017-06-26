@@ -1,8 +1,10 @@
 Changelog
 =========
 
-1.1.6 (unreleased)
+2.0.0 (unreleased)
 ------------------
+
+- Added simplelayout.common.types in development so shop blocks can be added. [lknoepfel]
 
 - Drop Plone 4.1 support. [jone]
 
