@@ -1,10 +1,10 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from ftw.shop.browser.shopitem import ShopCompactItemView
+from ftw.shop.browser.shopitem import ShopItemView
 from simplelayout.base.interfaces import IBlockConfig
 from zope.component import queryMultiAdapter
 
 
-class ShopItemBlockView(ShopCompactItemView):
+class ShopItemBlockView(ShopItemView):
     """Default view for a shop item block
     """
 
